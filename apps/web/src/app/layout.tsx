@@ -12,7 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MCPForge",
+  title: "Zelquo",
   description:
     "An AI-native developer workspace that analyzes your web application and helps " +
     "transform it into a safe, testable, WebMCP-compatible application.",
