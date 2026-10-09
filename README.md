@@ -1,9 +1,9 @@
-# MCPForge
+# Zelquo
 
 **An AI-native developer workspace that analyzes developer-controlled web applications and helps transform them into safe, testable, WebMCP-compatible applications.**
 
-> **Project status: Phase 1 of 9 — application foundation.**
-> Both tiers now build, typecheck, lint and test cleanly, with authentication, environment validation, the design system and the workspace shell in place. **The pipeline below is not implemented yet** — repository analysis, tool generation, security review and pull-request creation all arrive in Phases 3–6. Nothing here describes a working feature unless `STATUS.md` says it is done.
+> **Project status: Phase 8 complete (90% of the internal milestone plan); Phase 9 hardening, demo and launch remain.**
+> The repository includes the core analysis-to-PR pipeline, but live end-to-end validation and release hardening remain incomplete. See `STATUS.md` for detailed evidence and blockers.
 
 ---
 
@@ -15,7 +15,7 @@ Web applications were built for humans looking at screens. An AI agent asked to 
 
 But adopting it is still a week of careful judgment per application — deciding which workflows to expose, writing schemas, wiring handlers into existing business logic without duplicating it, classifying risk, gating anything consequential behind human approval, and proving an agent can actually use the result.
 
-**MCPForge does that work with the developer.**
+**Zelquo does that work with the developer.**
 
 ## How it works
 
@@ -35,13 +35,13 @@ Connect repository (scoped, read-only)
 
 Six runtime agents, one Gemini provider, and a deterministic state machine around them. The AI proposes; deterministic code records and enforces; the human decides.
 
-MCPForge is also **itself** WebMCP-compatible — an agent can drive MCPForge through the same approval gates a human uses.
+Zelquo is also **itself** WebMCP-compatible — an agent can drive Zelquo through the same approval gates a human uses.
 
 ## Stack
 
 | Tier | Stack |
 |---|---|
-| Web — `apps/web` | Next.js (App Router), React, TypeScript, Tailwind. Hosts MCPForge's own WebMCP surface. |
+| Web — `apps/web` | Next.js (App Router), React, TypeScript, Tailwind. Hosts Zelquo's own WebMCP surface. |
 | Backend — `services/api` | Python 3.12, FastAPI, Pydantic v2, `uv`. All AI calls, credentials, repository access and authorization. |
 | Model | Gemini via the official `google-genai` Python SDK. Model id from `GEMINI_MODEL`. |
 | Auth | Firebase Authentication (separate from GitHub repository authorization) |

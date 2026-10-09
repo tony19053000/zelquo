@@ -2,7 +2,7 @@
   "name": "mcpforge",
   "private": true,
   "version": "0.1.0",
-  "description": "AI-native developer workspace that transforms web applications into safe, testable, WebMCP-compatible applications.",
+  "description": "Zelquo: AI-native developer workspace that transforms web applications into safe, testable, WebMCP-compatible applications.",
   "license": "MIT",
   "workspaces": [
     "apps/*",

@@ -21,7 +21,7 @@ export default function Home() {
       <header className="border-b border-border">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
           <Logo className="text-base" />
-          <Badge tone="accent">Phase 1 · foundation</Badge>
+          <Badge tone="accent">Pre-launch · in development</Badge>
         </div>
       </header>
 
@@ -30,7 +30,7 @@ export default function Home() {
           Make your web app usable by AI agents — without guessing at the wiring.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          MCPForge reads a repository you control, finds the workflows worth exposing, designs
+          Zelquo reads a repository you control, finds the workflows worth exposing, designs
           WebMCP tools for them, generates the integration, reviews it for security, tests that an
           agent can actually use it, and opens a pull request. You approve every consequential
           step.
@@ -50,7 +50,7 @@ export default function Home() {
             </Button>
           )}
           <Link
-            href="https://github.com/tony19053000/MCPForge"
+            href="https://github.com/tony19053000/Zelquo"
             className="text-sm text-muted underline underline-offset-4 hover:text-text"
           >
             Read the architecture
@@ -68,7 +68,7 @@ export default function Home() {
           <Card>
             <h2 className="text-sm font-semibold text-text">You hold every gate</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Approvals are recorded state, not model output. An agent can drive MCPForge and still
+              Approvals are recorded state, not model output. An agent can drive Zelquo and still
               cannot approve anything on your behalf.
             </p>
           </Card>
@@ -84,7 +84,7 @@ export default function Home() {
         <section className="mt-16">
           <Card className="border-warning bg-warning-subtle">
             <h2 className="text-sm font-semibold text-text">
-              Under construction — Phase 1 of 9
+              Under construction — launch validation pending
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-text">
               The application foundation is being built. Repository analysis, tool generation and
@@ -97,7 +97,7 @@ export default function Home() {
 
       <footer className="border-t border-border">
         <div className="mx-auto max-w-5xl px-6 py-8 text-sm text-subtle">
-          MCPForge · MIT licensed ·{" "}
+          Zelquo · MIT licensed ·{" "}
           <SupportedFrameworks />
         </div>
       </footer>
