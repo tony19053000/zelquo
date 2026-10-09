@@ -1,16 +1,16 @@
-# MCPForge — Product Requirements Document
+# Zelquo — Product Requirements Document
 
-**Status:** Phase 0 baseline. Living document — update when product behaviour or scope changes.
+**Status:** Living product specification. Implementation progress and blockers are tracked in `STATUS.md`.
 
 ---
 
 ## 1. Product
 
-**MCPForge**
+**Zelquo**
 
 ## 2. One-line product statement
 
-MCPForge is an AI-native developer workspace that analyzes developer-controlled web applications and helps transform them into safe, testable, WebMCP-compatible applications.
+Zelquo is an AI-native developer workspace that analyzes developer-controlled web applications and helps transform them into safe, testable, WebMCP-compatible applications.
 
 ## 3. The problem
 
@@ -29,9 +29,9 @@ But WebMCP moves the difficulty rather than removing it. A developer who wants t
 - keep the visible UI in sync when an agent acts
 - verify that an agent can actually discover and use the tools
 
-That is a week of careful work per application, and most of it is judgment rather than typing. **MCPForge is the tool that does that work with the developer.**
+That is a week of careful work per application, and most of it is judgment rather than typing. **Zelquo is the tool that does that work with the developer.**
 
-## 4. What MCPForge is not
+## 4. What Zelquo is not
 
 - Not a browser agent. It does not operate other people's websites.
 - Not a hosted proxy that fakes WebMCP support for a site it does not own. The output is real code in the developer's repository.
@@ -51,35 +51,35 @@ That is a week of careful work per application, and most of it is judgment rathe
 
 ## 6. Core user journey
 
-1. Developer signs into MCPForge.
+1. Developer signs into Zelquo.
 2. Creates or selects a project.
 3. Connects a **developer-controlled** GitHub repository through a scoped GitHub App installation.
 4. Optionally supplies the deployed application URL.
 5. Chooses repository and branch.
-6. MCPForge analyzes the repository inside the secure execution boundary, read-only.
-7. MCPForge discovers the application's major workflows.
+6. Zelquo analyzes the repository inside the secure execution boundary, read-only.
+7. Zelquo discovers the application's major workflows.
 8. Developer selects which workflows AI agents should be allowed to reach.
-9. MCPForge designs the WebMCP tools for those workflows.
+9. Zelquo designs the WebMCP tools for those workflows.
 10. Developer reviews the tool plan — names, schemas, risk class, approval requirements.
 11. Developer approves generation.
-12. MCPForge generates the integration as a patch.
+12. Zelquo generates the integration as a patch.
 13. The Security Reviewer agent reviews the generated implementation.
 14. Developer reviews findings.
 15. The Validator agent tests the WebMCP integration deterministically.
-16. MCPForge produces an Agent Readiness Report with a computed score.
+16. Zelquo produces an Agent Readiness Report with a computed score.
 17. Developer reviews the exact code diff.
 18. Developer approves.
-19. MCPForge creates a branch and opens a pull request.
+19. Zelquo creates a branch and opens a pull request.
 20. Developer merges through their normal GitHub workflow.
 21. Once deployed, the website is WebMCP-compatible.
 
-At no point does MCPForge write to the default branch, and at no point does an LLM's output constitute an approval.
+At no point does Zelquo write to the default branch, and at no point does an LLM's output constitute an approval.
 
 ## 7. MVP scope
 
 **Target applications:** TypeScript + React + Next.js web applications.
 
-This is a real constraint, stated honestly in the product UI. MCPForge detects the framework and tells the developer plainly when a repository is outside supported scope rather than producing plausible-looking output for a stack it cannot actually reason about.
+This is a real constraint, stated honestly in the product UI. Zelquo detects the framework and tells the developer plainly when a repository is outside supported scope rather than producing plausible-looking output for a stack it cannot actually reason about.
 
 **MVP delivers:**
 
@@ -95,7 +95,7 @@ This is a real constraint, stated honestly in the product UI. MCPForge detects t
 - Automated security review of generated code
 - Deterministic validation and a computed Agent Readiness Score
 - Branch + pull request creation
-- MCPForge's own WebMCP tool surface
+- Zelquo's own WebMCP tool surface
 - Development-mode secure execution, labelled as such
 
 ## 8. Explicitly out of MVP scope
@@ -105,18 +105,18 @@ This is a real constraint, stated honestly in the product UI. MCPForge detects t
 | Vanilla JS, Vue, Svelte, Angular adapters | Future — architecture must allow, MVP must not claim |
 | Project upload (zip / drag-and-drop ingestion) | Future — MVP ingests via GitHub App or the bundled demo project only |
 | Non-JS backends in the analyzed repository | Future |
-| Hardware-attested confidential execution | Interface and verification built in MVP (`F8-01`). Obtaining a real attestation is Phase 8, and it has been demonstrated: on 2026-09-11 a real Confidential Space run (`cs-20260910-234427-b3b40d`) produced a token the MCPForge API verified to `HARDWARE_ATTESTED`. The supporting work — the Confidential Space workload image (`F8-02a`) and the workload-identity infrastructure (`F8-02b`) — is in scope for Phase 8; all three have passed. The product still reports `DEVELOPMENT_ISOLATION` whenever no in-date, API-verified attestation exists, and **running repository analysis inside the attested boundary is not in MVP scope as delivered** — the attested workload performs preflight and attestation only. **Scope, added with `F8-02`:** the relying-party channel is part of Phase 8 — the API issues each attestation run's nonce, the workload delivers its token to a private Cloud Storage bucket, and the API verifies it against its own pinned digest, once per run. Verification inside the TEE does not count |
+| Hardware-attested confidential execution | Interface and verification built in MVP (`F8-01`). Obtaining a real attestation is Phase 8, and it has been demonstrated: on 2026-09-11 a real Confidential Space run (`cs-20260910-234427-b3b40d`) produced a token the Zelquo API verified to `HARDWARE_ATTESTED`. The supporting work — the Confidential Space workload image (`F8-02a`) and the workload-identity infrastructure (`F8-02b`) — is in scope for Phase 8; all three have passed. The product still reports `DEVELOPMENT_ISOLATION` whenever no in-date, API-verified attestation exists, and **running repository analysis inside the attested boundary is not in MVP scope as delivered** — the attested workload performs preflight and attestation only. **Scope, added with `F8-02`:** the relying-party channel is part of Phase 8 — the API issues each attestation run's nonce, the workload delivers its token to a private Cloud Storage bucket, and the API verifies it against its own pinned digest, once per run. Verification inside the TEE does not count |
 | ChatGPT MCP connector / hosted MCP server | Future scope, documented in `02_ARCHITECTURE.md` §Future |
 | Team accounts, org billing, RBAC | Future |
 | Automatic merge | Never — the developer merges |
 
 ## 9. Framework support policy
 
-MCPForge must never claim support it does not have. Framework support is a table in the product, not a marketing claim:
+Zelquo must never claim support it does not have. Framework support is a table in the product, not a marketing claim:
 
 - **Supported:** analysis, tool design, generation, validation all real.
-- **Detected, unsupported:** MCPForge names the framework and declines, explaining what is missing.
-- **Unknown:** MCPForge says it could not determine the framework and stops.
+- **Detected, unsupported:** Zelquo names the framework and declines, explaining what is missing.
+- **Unknown:** Zelquo says it could not determine the framework and stops.
 
 ## 10. Success criteria for the MVP
 
@@ -124,7 +124,7 @@ MCPForge must never claim support it does not have. Framework support is a table
 2. A generated patch applies cleanly, typechecks and builds in the target repository.
 3. The Validator produces an Agent Readiness Score derived only from executed checks, each linked to evidence.
 4. A pull request is opened on a branch, never on the default branch.
-5. MCPForge's own site exposes working WebMCP tools in a browser that supports the API, with feature detection and no mock presented as real.
+5. Zelquo's own site exposes working WebMCP tools in a browser that supports the API, with feature detection and no mock presented as real.
 6. No secret from a connected repository is ever included in a model prompt — provable by the filtering tests.
 
 ## 11. Product principles
